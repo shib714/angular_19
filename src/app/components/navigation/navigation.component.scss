@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-primary),
+  ));
+}
+
+.nav-spacer {
+    flex: 1 1 auto;
+  }
+
+  .nav-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  .nav-bright-container {
+    @include mat.theme((
+      color: mat.$cyan-palette,
+    ));
+  }
