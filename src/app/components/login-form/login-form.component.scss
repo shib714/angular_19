@@ -1,0 +1,17 @@
+
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; // Adjust the gap between form fields as needed
+  
+    mat-form-field {
+      width: 22%; // Make form fields take full width
+    }
+  
+    button {
+      align-self: flex-start; // Align the button to the start
+    }
+  }

@@ -19,5 +19,19 @@
   .nav-bright-container {
     @include mat.theme((
       color: mat.$cyan-palette,
+ 
     ));
+  }
+  // .nav-dark-container {
+  //   @include mat.theme((
+  //     color: mat.$dark-primary,
+  //   ));
+  // }
+
+  .nav-button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
   }
