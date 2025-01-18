@@ -1,31 +1,87 @@
-<h2>Material Reactive Form With Validation</h2>
-
-
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<h2 text-align="center">Material Reactive Form With Validation</h2>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="myForm">
     <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
-      <input matInput id="name" formControlName="name">
-      @if (myForm.get('name')?.invalid && myForm.get('name')?.touched) {
-        <mat-error>Name is required</mat-error>
-      }
+        <mat-label>Full Name</mat-label>
+        <input matInput id="fullname" formControlName="fullname">
+
+    
+
+        @if (submitted && f['fullname'].errors) {
+            @if (f['fullname'].errors['required']) {
+                <mat-error>Full Name is required</mat-error>
+            }
+        }
     </mat-form-field>
-  
     <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
-      <input matInput id="email" formControlName="email">
-      @if (myForm.get('email')?.invalid && myForm.get('email')?.touched) {
+        <mat-label>Username</mat-label>
+        <input matInput id="username" formControlName="username">
+
+        @if (submitted && f['username'].errors) {
+        @if (f['username'].errors['required']) {
+        <mat-error>Username is required</mat-error>
+        }
+        @if (f['username'].errors['minlength']) {
+        <div>Username must be at least 6 characters</div>
+        }
+        @if (f['username'].errors['maxlength']) {
+        <div>Username must not exceed 20 characters</div>
+        }
+        }
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput id="email" formControlName="email">
+        @if (submitted && f['email'].errors) {
+        @if (f['email'].errors['required']) {
+        <mat-error>Email is required</mat-error>
+        }
+        @if (f['email'].errors['email']) {
         <mat-error>Enter a valid email</mat-error>
-      }
- 
+        }
+        }
     </mat-form-field>
-  
+
     <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput id="password" type="password" formControlName="password">
-      @if (myForm.get('password')?.invalid && myForm.get('password')?.touched) {
-        <mat-error>Password must be at least 6 characters</mat-error>
-      }
+        <mat-label>Password</mat-label>
+        <input matInput id="password" type="password" formControlName="password">
+        @if (submitted && f['password'].errors) {
+            @if (f['password'].errors['required']) {
+            <mat-error>Password is required</mat-error>
+            }
+            @if (f['password'].errors['minlength']) {
+            <mat-error>Password must be at least 6 characters</mat-error>
+            }
+            @if (f['password'].errors['maxlength']) {
+            <mat-error>Password must not exceed 40 characters</mat-error>
+            }
+        }
     </mat-form-field>
-  
+    <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput id="confirmPassword" type="password" formControlName="confirmPassword">
+        @if (submitted && f['confirmPassword'].errors) {
+            @if (f['confirmPassword'].errors['required']) {
+            <mat-error>Confirm Password is required</mat-error>
+            }
+            @if (f['confirmPassword'].errors['matching']) {
+            <mat-error>Password does not match</mat-error>
+            }  
+        }
+    </mat-form-field>
+    <section class="checkbox-section" [formGroup]="myForm">
+        <p><mat-checkbox formControlName="acceptTerms">Accept terms and conditions?</mat-checkbox></p>        
+        @if (submitted && f['acceptTerms'].errors) {
+        <mat-error>Accept Terms is required</mat-error>
+        }
+    </section>
+
+    <pre>{{myForm.value | json}}</pre>
+    <!-- @if (submitted && myForm.invalid) {
+    <ng-container>
+        <mat-error>Please fill in all fields</mat-error>
+    </ng-container>
+    } -->
+
     <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
-  </form>
+    <button mat-raised-button color="primary" type="button" (click)="onReset()">Reset</button>
+</form>

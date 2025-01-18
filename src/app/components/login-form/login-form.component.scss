@@ -1,12 +1,16 @@
-
-
-
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; // Adjust the gap between form fields as needed
+#root {
+    padding: 30px;
+  }
   
+
+.myForm {
+    display: flex;    
+    flex-direction: column;
+    gap: 9px; // Adjust the gap between form fields as needed
+    padding-left:30px;
+    //max-width: 350px;
+    margin: auto;
+
     mat-form-field {
       width: 22%; // Make form fields take full width
     }
@@ -14,4 +18,7 @@ form {
     button {
       align-self: flex-start; // Align the button to the start
     }
+  }
+  .checkbox-section {
+    margin: 12px 0;
   }
