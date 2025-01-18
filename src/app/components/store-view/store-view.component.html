@@ -1,0 +1,10 @@
+<app-jumbotron title="Welcome to our License Plate store"
+               description="Browse our collection of license plates"></app-jumbotron>
+
+<mat-grid-list cols="3" rowHeight="2:2.15"  role="list">
+    @for(plate of plates$ | async; track plate._id) {
+    <mat-grid-tile role="listitem">
+        <app-license-plate buttonText="Add to cart" [plate]="plate" [currencyInfo]="currencyInfo()" />
+    </mat-grid-tile>
+    }
+</mat-grid-list>

@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.grid-list-overrides ((
+    tile-header-primary-text-size: --mat-sys-body-large,
+    tile-header-secondary-text-size: --mat-sys-body-medium,
+    tile-footer-primary-text-size:----mat-sys-body-large,
+    tile-footer-secondary-text-size:----mat-sys-body-medium
+    
+  ));
+}

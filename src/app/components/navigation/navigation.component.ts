@@ -14,6 +14,7 @@ import { CurrencySwitcherComponent } from '../currency-switcher/currency-switche
     MatButtonModule, 
     MatIconModule,
     MatDividerModule,
+    CurrencySwitcherComponent,
     
   ],
   templateUrl: './navigation.component.html',

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { PlateStoreComponent } from './components/plate-store/plate-store.component';
+import { StoreViewComponent } from './components/store-view/store-view.component';
 
 export const routes: Routes = [
     {
@@ -18,8 +18,8 @@ export const routes: Routes = [
         component: LoginFormComponent
     },
     {
-        path:'plate-store',
-        component: PlateStoreComponent
+        path:'store-view',
+        component: StoreViewComponent
 
     }
     // {
