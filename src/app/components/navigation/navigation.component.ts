@@ -3,7 +3,8 @@ import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDividerModule } from '@angular/material/divider'
+import { MatDividerModule } from '@angular/material/divider';
+import { CurrencySwitcherComponent } from '../currency-switcher/currency-switcher.component';
 
 @Component({
   selector: 'app-navigation',
@@ -13,6 +14,7 @@ import { MatDividerModule } from '@angular/material/divider'
     MatButtonModule, 
     MatIconModule,
     MatDividerModule,
+    
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'

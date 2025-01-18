@@ -1,18 +1,28 @@
-#root {
-    padding: 30px;
+@use '@angular/material' as mat;
+
+
+// #root {
+//     padding: 30px;
+//     padding-left:30px;
+//   }
+:myForm {
+    @include mat.datepicker-overrides((
+      calendar-date-selected-state-text-color: orange,
+      calendar-date-selected-state-background-color: red,
+    ));
   }
-  
 
 .myForm {
     display: flex;    
     flex-direction: column;
     gap: 9px; // Adjust the gap between form fields as needed
-    padding-left:30px;
-    //max-width: 350px;
+
+    max-width: 750px;
     margin: auto;
+    align-items: flex-start;
 
     mat-form-field {
-      width: 22%; // Make form fields take full width
+      width: 30%; // Make form fields take full width
     }
   
     button {

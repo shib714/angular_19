@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { PlateStoreComponent } from './components/plate-store/plate-store.component';
 
 export const routes: Routes = [
     {
@@ -16,11 +17,11 @@ export const routes: Routes = [
         path: 'login-form',
         component: LoginFormComponent
     },
-    // {
-    //     path:'employee-view',
-    //     component: EmployeeViewComponent
+    {
+        path:'plate-store',
+        component: PlateStoreComponent
 
-    // }
+    }
     // {
     //     path: "cart", 
     //     component: CartViewComponent
