@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { StoreViewComponent } from './components/store-view/store-view.component';
+import { VehicleSelectionComponent } from './components/vehicle-selection/vehicle-selection.component';
 
 export const routes: Routes = [
     {
@@ -20,12 +21,11 @@ export const routes: Routes = [
     {
         path:'store-view',
         component: StoreViewComponent
-
-    }
-    // {
-    //     path: "cart", 
-    //     component: CartViewComponent
-    // },
+    },
+    {
+        path: "vehicle-selection", 
+        component: VehicleSelectionComponent
+    },
  
     // {
     //     path: "checkout", 

@@ -1,0 +1,54 @@
+@use '@angular/material' as mat;
+
+:root {
+  color-scheme: light dark;
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-primary),
+  ));
+}
+.vehicle-form-container {
+  color-scheme: light;
+  color: var(--mat-sys-on-primary-container);
+  @include mat.theme((
+    color: mat.$blue-palette, 
+    typography: Roboto,
+    density: -5
+  ));
+}
+.form-spacer {
+    flex: 1 1 auto;
+  }
+
+  .nav-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+
+  // .nav-button-row {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: flex-end;
+  //   align-items: center;
+
+  // }
+
+  .vehicle-form {
+    display: flex;    
+    flex-direction: column;
+    gap: 9px; // Adjust the gap between form fields as needed
+
+    max-width: 750px;
+    margin: auto;
+    align-items: flex-start;
+
+    mat-form-field {
+      width: 30%; // Make form fields take full width
+    }
+  
+    button {
+      align-self: flex-start; // Align the button to the start
+    }
+  }

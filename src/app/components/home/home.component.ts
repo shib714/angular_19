@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
+import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 
 @Component({
   selector: 'app-home',
-  imports: [MatCardModule],
+  imports: [JumbotronComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

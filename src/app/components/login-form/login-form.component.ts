@@ -1,14 +1,13 @@
 import { Component, inject } from '@angular/core';
-import {provideNativeDateAdapter} from '@angular/material/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl, FormControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import Validation from '../utils/validation';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import{MatNativeDateModule} from '@angular/material/core';
+import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 
 
 @Component({
@@ -22,6 +21,7 @@ import{MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,  
     MatNativeDateModule,  
     JsonPipe,
+    JumbotronComponent,
    
   ],
   templateUrl: './login-form.component.html',
