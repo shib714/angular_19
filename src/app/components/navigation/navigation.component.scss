@@ -1,13 +1,17 @@
 @use '@angular/material' as mat;
 
 :root {
+  color-scheme: light dark;
   @include mat.toolbar-overrides((
-    container-background-color: var(--mat-sys-surfacergb(119, 0, 255)),//var(--mat-sys-primary-container),
+    container-background-color: var(--mat-sys-primary-container),
     container-text-color: var(--mat-sys-primary),
   ));
 }
 .nav-dark-container {
   color-scheme: dark;
+  //background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  border: 1px solid var(--mat-sys-outline-variant);
   @include mat.theme((
     color: mat.$blue-palette, 
     typography: Roboto,

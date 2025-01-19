@@ -8,6 +8,30 @@
   ));
 }
 
+.jumbotron-dark-container {
+  color-scheme: light;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  //border: 1px solid var(--mat-sys-outline-variant);
+  align-items: center;
+
+  @include mat.theme((
+    color: mat.$blue-palette, 
+    typography: Roboto,
+    density: -4
+  ));
+}
+
+
+
+
+.jumbotron {
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  border: 1px solid var(--mat-sys-outline-variant);
+  font: var(--mat-sys-body-large);
+}
+
 .jumbotron.mat-card {
     transition: box-shadow 280ms;
     display: block;
