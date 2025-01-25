@@ -12,8 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { VehicleDataSource } from './vehicle-datasource';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
+import { TableDataSource } from './table-datasource';
 
 @Component({
   selector: 'app-vehicle-selection',
@@ -34,7 +34,7 @@ import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
     MatSelectModule,
     MatIconModule,
     MatTableModule,
-    MatPaginatorModule, 
+    MatPaginatorModule,
     MatSortModule,
   ],
   templateUrl: './vehicle-selection.component.html',
@@ -42,18 +42,16 @@ import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 })
 export class VehicleSelectionComponent {
 
-  displayedColumns: string[] = ['name', 'model', 'cost_in_credits', 'cargo_capacity','created'];
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['name', 'model', 'manufacturer', 'cost_in_credits', 'cargo_capacity', 'vehicle_class', 'created'];
 
-  private vehicleService = inject(VehicleService);
+  vehicleService = inject(VehicleService);
 
-  vehicles: Signal<Vehicle[]> = this.vehicleService.vehicles;
-  dataSource = new MatTableDataSource<Vehicle>();
-
-
- // dataSource = new VehicleDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Vehicle>;
+  dataSource = new TableDataSource();
 
 
   selectedVehicle: WritableSignal<Vehicle | undefined> = this.vehicleService.selectedVehicle;
@@ -62,22 +60,11 @@ export class VehicleSelectionComponent {
 
   color: Signal<'blue' | 'green'> = this.vehicleService.color;
 
-  ngOnInit() {
-    this.dataSource.connect().subscribe({
-      next: (data: any) => this.dataSource = new MatTableDataSource(data),
-      error: (e) => console.error(e),
-      complete: () => console.info('complete') 
-    });
-  }
-
   ngAfterViewInit(): void {
-
-    console.log(this.vehicles())
-    //console.log(this.dataSource)   
+    console.log("TableComponent dataSource: " + this.dataSource);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
-
   }
 
 }
