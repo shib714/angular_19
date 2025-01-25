@@ -1,39 +1,38 @@
 <app-jumbotron title="Welcome to our Vehicle Store" description="Star Wars Vehicle Sales"></app-jumbotron>
 <h2 align="center">Vehicles available for sale</h2>
-<div class="vehicle-container mat-elevation-z8">
-    <div class="vehicle-table-container">
-        <table mat-table [dataSource]="vehicles()" class="mat-elevation-z8">
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Vehicle Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-            <ng-container matColumnDef="model">
-                <th mat-header-cell *matHeaderCellDef>Model </th>
-                <td mat-cell *matCellDef="let element"> {{element.model}} </td>
-          
-            </ng-container>
-            <ng-container matColumnDef="cost_in_credits">
-                <th mat-header-cell *matHeaderCellDef>Cost ($)</th>               
-                <td mat-cell *matCellDef="let element"> {{element.cost_in_credits}}</td>
-            </ng-container>
-            <ng-container matColumnDef="cargo_capacity">
-                <th mat-header-cell *matHeaderCellDef> Capacity </th>
-                <td mat-cell *matCellDef="let element"> {{element.cargo_capacity}} </td>
-            </ng-container>
-            <ng-container matColumnDef="created">
-                <th mat-header-cell *matHeaderCellDef> Create Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.created |date: 'yyyy-MM-dd'}} </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </div>
-    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
-  </mat-paginator> -->
+<div class="vehicle-container mat-elevation-z2">
+
+    <table mat-table class="full-width-table" matSort aria-label="Elements">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Vehicle Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Model </th>
+            <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+
+        </ng-container>
+        <ng-container matColumnDef="cost_in_credits">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Cost ($)</th>
+            <td mat-cell *matCellDef="let element"> {{element.cost_in_credits}}</td>
+        </ng-container>
+        <ng-container matColumnDef="cargo_capacity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Capacity </th>
+            <td mat-cell *matCellDef="let element"> {{element.cargo_capacity}} </td>
+        </ng-container>
+        <ng-container matColumnDef="created">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Create Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.created |date: 'yyyy-MM-dd'}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
+    </mat-paginator>
 </div>
-<app-jumbotron title="Please select a vehicle " description=""></app-jumbotron>
+<!-- <app-jumbotron title="Please select a vehicle " description=""></app-jumbotron>
 <div class="vehicle-form-container vehicle-form">
     
         <mat-form-field appearance="outline" >
@@ -51,4 +50,4 @@
     <div><mat-label>Vehicle: </mat-label><span> {{ selectedVehicle()?.name }}</span></div>
     <div><mat-label>Unit Price:  </mat-label><span>{{ selectedVehicle()?.cost_in_credits | currency }}</span></div>
     <div><mat-label>Total:  </mat-label><span [style.color]='color()'>{{total() | currency }}</span></div>
-</div>
+</div> -->

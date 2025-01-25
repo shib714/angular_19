@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { CurrencyService } from '../../services/currency.service';
+import { CurrencyService } from '../../../services/currency.service';
 import { AsyncPipe } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { LicensePlateComponent } from '../license-plate/license-plate.component';
-import { PlateService } from '../../services/plate.service';
-import { JumbotronComponent } from '../jumbotron/jumbotron.component';
+import { LicensePlateComponent } from '../license-plate.component';
+import { PlateService } from '../../../services/plate.service';
+import { JumbotronComponent } from '../../jumbotron/jumbotron.component';
 
 
 

@@ -4,7 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
-import { CurrencySwitcherComponent } from '../currency-switcher/currency-switcher.component';
+import { CurrencySwitcherComponent } from '../license-plate/currency-switcher/currency-switcher.component';
+
 
 @Component({
   selector: 'app-navigation',

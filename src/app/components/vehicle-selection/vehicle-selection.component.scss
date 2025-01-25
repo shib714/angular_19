@@ -35,20 +35,3 @@
 
   // }
 
-  .vehicle-form {
-    display: flex;    
-    flex-direction: column;
-    gap: 9px; // Adjust the gap between form fields as needed
-
-    max-width: 750px;
-    margin: auto;
-    align-items: flex-start;
-
-    mat-form-field {
-      width: 30%; // Make form fields take full width
-    }
-  
-    button {
-      align-self: flex-start; // Align the button to the start
-    }
-  }
