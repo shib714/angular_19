@@ -1,11 +1,10 @@
-import { ChangeDetectorRef, Component, computed, DestroyRef, effect, ElementRef, QueryList, Signal, signal, viewChild, ViewChild, viewChildren, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, computed, DestroyRef, effect, ElementRef, Signal, signal, viewChild, viewChildren,  } from '@angular/core';
 import { players } from '../../../model/players';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PlayerComponent } from '../player.component';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { FilterPipe } from '../filter.pipe';
+
 
 @Component({
   selector: 'app-player-search',

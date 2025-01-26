@@ -49,9 +49,9 @@
                 <p><mat-checkbox formControlName="acceptTerms">Accept terms and conditions?</mat-checkbox></p>
 
             </section>
-
+            <p>Form filed values: </p>
             <pre>{{myForm.value | json}}</pre>
-            <p>{{myForm.valid}}</p>
+            <p>Validation status of the form: {{myForm.valid}}</p>
 
         </mat-card-content>
         <mat-card-actions>
