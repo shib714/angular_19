@@ -2,7 +2,7 @@
     <section>
       <label for="search">Search Players</label>
       <input #searchField type="search" id="search" autocomplete="off" [(ngModel)]="searchText" [formControl]="search" placeholder="Search by entering a player name" />
-      <em>Player Components Visible: {{ playerComponentsCount }}</em>
+      <em>Player Components Visible: {{ playerComponentsCount() }}</em>
     </section>
     <div>
       @for (player of filteredPlayers(); track player.name) {
