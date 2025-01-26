@@ -11,11 +11,13 @@ import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import Validation from '../utils/validation';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-login-form',
-  imports: [
+  imports: [ RouterLink,
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
@@ -58,6 +60,9 @@ export class LoginFormComponent {
     this.myForm.get('password')?.valueChanges.subscribe(x => {
       this.validatePasswordControl(this.myForm.get('password') as FormControl);
     })
+    this.myForm.get('confirmPassword')?.valueChanges.subscribe(x => {
+      this.validateConfirmPasswordControl(this.myForm.get('confirmPassword') as FormControl);
+    });
     console.log(this.myForm.controls['password'].value);
     console.log(this.myForm.controls);
     
@@ -69,6 +74,10 @@ export class LoginFormComponent {
         username: ['', [Validators.required, Validators.minLength(4)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6), customPasswordValidator]],
+        confirmPassword: ['', [Validators.required]],
+      },
+      {
+        validators: [Validation.match('password', 'confirmPassword')]
       }
     );
   }
@@ -121,16 +130,33 @@ export class LoginFormComponent {
     this.passwordErrorMessage = '';
     if (passwordControl.errors && (passwordControl.touched || passwordControl.dirty)) {
       if ( passwordControl.errors?.['required']) {
-        this.passwordErrorMessage = 'This is a required field';
+        this.passwordErrorMessage = 'Password is required';
       }
       if (passwordControl.errors?.['minlength']) {
-        this.passwordErrorMessage = 'Minimum length is ' + passwordControl.errors?.['minlength']?.requiredLength;
+        this.passwordErrorMessage = 'Password must be at least ' + passwordControl.errors?.['minlength']?.requiredLength + ' characters.';
       }
       if (passwordControl.errors?.['invalidPassword']) {
         this.passwordErrorMessage = 'Please enter a valid password.';
       }
     }
   }
+
+ //password validation
+ public confirmPasswordErrorMessage!: string;
+ private validateConfirmPasswordControl(confirmPasswordControl: FormControl): void {
+   this.confirmPasswordErrorMessage = '';
+   if (confirmPasswordControl.errors && (confirmPasswordControl.touched || confirmPasswordControl.dirty)) {
+     if ( confirmPasswordControl.errors?.['required']) {
+       this.confirmPasswordErrorMessage = 'Confirm password is required';
+     }
+     if (!confirmPasswordControl.errors?.['matching']) {
+       this.confirmPasswordErrorMessage = 'Confirm Password does not match.';
+     }
+     
+   }
+ }
+
+
 
 
 }

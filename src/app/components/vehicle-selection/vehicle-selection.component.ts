@@ -14,10 +14,12 @@ import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { TableDataSource } from './table-datasource';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-selection',
   imports: [
+  
     FormsModule,
     MatCardModule,
     MatFormFieldModule,
@@ -26,6 +28,7 @@ import { TableDataSource } from './table-datasource';
     JumbotronComponent,
     MatTableModule,
     DatePipe,
+    CurrencyPipe,
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
@@ -47,6 +50,9 @@ export class VehicleSelectionComponent {
   displayedColumns = ['name', 'model', 'manufacturer', 'cost_in_credits', 'cargo_capacity', 'vehicle_class', 'created'];
 
   vehicleService = inject(VehicleService);
+  vehicles = this.vehicleService.vehicles;
+
+  routerService = inject(Router);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -65,6 +71,10 @@ export class VehicleSelectionComponent {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  navigateToLicensePlate(): void {
+    this.routerService.navigate(['/store-view']);
   }
 
 }
