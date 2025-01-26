@@ -21,20 +21,20 @@ export class PlayerSearchComponent {
   protected filteredPlayers = computed(() => this.players.filter(p => p.name.toLowerCase().includes(this.searchText().toLowerCase())));
   //protected playerComponentsCount: number = 0;
 
-  //Let’s switch this @ViewChild and update it to use signals
-  //therefore instead of using the ngAfterViewInit lifecycle hook, 
-  // we’ll use the new effect function within the constructor 
-  // which allows us to react to signal value changes
-  //@ViewChild('searchField') private searchField?: ElementRef<HTMLInputElement>;
-  private searchField = viewChild<ElementRef<HTMLInputElement>>('searchField');
+  //Step 1 : Let’s switch this @ViewChild to use signals
+  //We will use new effect function within the constructor instead of ngAfterViewInit lifecycle hook, 
+  // allowing us to react to signal value changes
+  //@ViewChild('searchField') private searchField?: ElementRef<HTMLInputElement>; --old way
+  private searchField = viewChild<ElementRef<HTMLInputElement>>('searchField'); //new way
 
+  //Step 2: 
   //@ViewChildren(PlayerComponent) private playerComponents?: QueryList<PlayerComponent>;
   private playerComponents = viewChildren(PlayerComponent);
-  //With this conversion, rather than use the function with the whole observable subscription, 
-  // we can use a new concept where we create a signal from another signal
-  //let’s change the “playerComponentsCount” property to use the new computed function.
-  //so, whenever the viewChildren signal is updated, its value will trigger this signal to update with its new length
-  //And this means we can remove the “updatePlayerComponentsCount” function, 
+  //With this conversion, rather than use the function (updatePlayerComponentsCount) with the whole observable subscription, 
+  // we create playerComponentsCount a signal from another signal using the new computed function .
+  //So, whenever the viewChildren signal is updated, its value will trigger this signal to update with its new length
+
+  //This means we can remove all the “updatePlayerComponentsCount” function, 
   // the ngAfterViewInit function and its imports, the takeUntilDestroyed function, the DestroyRef, and the ChangeDetectorRef too
   protected playerComponentsCount: Signal<number> = computed(() => this.playerComponents().length);
 
