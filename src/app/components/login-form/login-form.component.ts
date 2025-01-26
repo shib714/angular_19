@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -75,6 +75,7 @@ export class LoginFormComponent {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6), customPasswordValidator]],
         confirmPassword: ['', [Validators.required]],
+        acceptTerms: [false, Validators.requiredTrue]
       },
       {
         validators: [Validation.match('password', 'confirmPassword')]
