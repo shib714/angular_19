@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { StoreViewComponent } from './components/license-plate/store-view/store-view.component';
 import { VehicleSelectionComponent } from './components/vehicle-selection/vehicle-selection.component';
+import { PlayerSearchComponent } from './components/player/player-search/player-search.component';
 
 export const routes: Routes = [
     {
@@ -25,10 +26,9 @@ export const routes: Routes = [
     {
         path: "vehicle-selection", 
         component: VehicleSelectionComponent
+    }, 
+    {
+        path: "player-search", 
+        component: PlayerSearchComponent
     },
- 
-    // {
-    //     path: "checkout", 
-    //     component: CheckoutViewComponent
-    // },
 ];
