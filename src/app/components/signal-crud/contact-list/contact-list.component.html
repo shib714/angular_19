@@ -1,0 +1,35 @@
+<mat-toolbar
+>My Contacts - count ({{ contactsResource.value()?.length }})
+<button mat-icon-button routerLink="/add">
+  <mat-icon>add_circle</mat-icon>
+</button>
+
+</mat-toolbar>
+
+<mat-list>
+    @for (contact of contactsResource.value(); track contact.id) {
+    <!-- <mat-divider /> -->
+    <mat-list-item>
+      <h3 matListItemTitle>{{ contact.name }}</h3>
+      <p matListItemLine>{{ contact.email }}</p>
+      <div matListItemMeta>
+        <button mat-icon-button [routerLink]="['/edit', contact.id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="deleteContact(contact.id)" >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+   
+    }
+  </mat-list>
+  @if (loading()) {
+    <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+  }
+  <!-- we can display this using snackbar from the component ts file
+  @if (contactsResource.error()) {
+    <p>{{ contactsResource.error()}}</p>
+  }
+   -->

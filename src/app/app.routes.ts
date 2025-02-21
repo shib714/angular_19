@@ -1,34 +1,58 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { StoreViewComponent } from './components/license-plate/store-view/store-view.component';
-import { VehicleSelectionComponent } from './components/vehicle-selection/vehicle-selection.component';
-import { PlayerSearchComponent } from './components/player/player-search/player-search.component';
+import { DemoAppComponent } from './components/promises-observables/demo-app/demo-app.component';
 
 export const routes: Routes = [
     {
         path: '',
         redirectTo: 'home',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        title: 'Home'
     },
     {
         path: 'home',
         component: HomeComponent
     },
     {
+        path: 'contact-list',
+        loadComponent: () => import('./components/signal-crud/contact-list/contact-list.component').then(m => m.ContactListComponent),
+        title: 'Contact List'
+
+    },
+    {
+        path: 'add',
+        loadComponent: () => import('./components/signal-crud/add-contact/add-contact.component').then(m => m.AddContactComponent),
+        title: 'Add Contact'
+
+    },
+    {
+        path: 'edit/:id',
+        loadComponent: () => import('./components/signal-crud/edit-contact/edit-contact.component').then(m => m.EditContactComponent),
+        title: 'Edit Contact'
+    },
+    {
         path: 'login-form',
-        component: LoginFormComponent
+        loadComponent: () => import('./components/login-form/login-form.component').then(m => m.LoginFormComponent),           
+        title: 'Login Form'
     },
     {
         path:'store-view',
-        component: StoreViewComponent
+        loadComponent: () => import('./components/license-plate/store-view/store-view.component').then(m => m.StoreViewComponent),
+        title: 'Store View'
     },
     {
         path: "vehicle-selection", 
-        component: VehicleSelectionComponent
+       loadComponent: () => import('./components/vehicle-selection/vehicle-selection.component').then(m => m.VehicleSelectionComponent),
+        title: 'Vehicle Selection'
     }, 
     {
         path: "player-search", 
-        component: PlayerSearchComponent
+        loadComponent: () => import('./components/player/player-search/player-search.component').then(m => m.PlayerSearchComponent),
+        title: 'Player Search'
+    },
+
+    {
+        path: "demo-app", 
+        component: DemoAppComponent
     },
 ];

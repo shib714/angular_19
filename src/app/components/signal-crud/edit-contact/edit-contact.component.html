@@ -1,0 +1,28 @@
+<!-- <h2>Edit Contact</h2>
+<form  (ngSubmit)="editContact()">
+    <div class="contact-form-fields">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" [(ngModel)]="name"    name="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" [(ngModel)]="email"  name="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" [(ngModel)]="phone"  name="phone">
+        </mat-form-field>
+    </div>
+    <div class="contact-form-actions">
+        <button type="submit" mat-flat-button color="primary">Edit</button>
+        <button type="button" mat-raised-button  color="warn" routerLink="/">Cancel</button>
+    </div>
+</form> -->
+@if (loading()) {
+    <mat-progress-spinner mode="indeterminate" ></mat-progress-spinner>
+  } 
+  @if (contactResource.value(); as contact) {
+    <app-contact-form title="Edit Contact" [contact]="contact" (save)="editContact($event)"/>   
+    }
+
