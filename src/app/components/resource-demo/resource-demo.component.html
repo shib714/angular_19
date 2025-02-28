@@ -1,0 +1,44 @@
+<div class="demo-container">
+
+    <h1>Resource Demo</h1>
+
+<div class="course-header">
+    <div class="form-control">
+        <label for="search">Vehicle name</label>
+        <input #input type="text" (keydown)="searchVehicles(input.value)" placeholder="Search vehicles"/>
+        {{input.value}}
+    </div>
+</div>
+
+@if(vehicles.isLoading()) {
+    <mat-spinner class="loading"/>
+  }
+  @else {
+    <div class="table-container">
+      <table class="results-table">
+        @for(vehicle of vehicles.value(); track vehicle.name) {
+          <tr>
+            <td>
+              {{vehicle.name}}
+            </td>
+          </tr>
+        }
+        @empty {
+          <div class="no-lessons">
+            No vehicle found.
+          </div>
+        }
+      </table>
+    </div>
+  }
+
+  <button class="btn reload-btn" (click)="reload()">
+    Reload Vehicles
+  </button>
+
+  <button class="btn" (click)="reset()">
+    Reset Vehicles
+  </button>
+
+
+</div>

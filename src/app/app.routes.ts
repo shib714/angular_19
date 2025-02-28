@@ -11,7 +11,8 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        title: 'Home'
     },
     {
         path: 'contact-list',
@@ -28,6 +29,11 @@ export const routes: Routes = [
     {
         path: 'edit/:id',
         loadComponent: () => import('./components/signal-crud/edit-contact/edit-contact.component').then(m => m.EditContactComponent),
+        title: 'Edit Contact'
+    },
+    {
+        path: 'resource-demo',
+        loadComponent: () => import('./components/resource-demo/resource-demo.component').then(m => m.ResourceDemoComponent),
         title: 'Edit Contact'
     },
     {
@@ -50,9 +56,14 @@ export const routes: Routes = [
         loadComponent: () => import('./components/player/player-search/player-search.component').then(m => m.PlayerSearchComponent),
         title: 'Player Search'
     },
-
+    {
+        path: "weather", 
+        loadComponent: () => import('./components/ng-template/weather.component').then(m => m.WeatherComponent),
+        title: 'Ng Template'
+    },
     {
         path: "demo-app", 
-        component: DemoAppComponent
+        component: DemoAppComponent,
+        title: 'Promises and Observables'
     },
 ];

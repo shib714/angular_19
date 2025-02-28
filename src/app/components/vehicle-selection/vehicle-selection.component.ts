@@ -1,7 +1,7 @@
 import { Component, inject, signal, Signal, ViewChild, WritableSignal } from '@angular/core';
 import { VehicleService } from '../../services/vehicle.service';
 import { Vehicle } from '../../model/vehicle';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -14,7 +14,8 @@ import { JumbotronComponent } from '../jumbotron/jumbotron.component';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { TableDataSource } from './table-datasource';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-vehicle-selection',
@@ -27,8 +28,7 @@ import { Router } from '@angular/router';
     MatSelectModule,
     JumbotronComponent,
     MatTableModule,
-    DatePipe,
-    CurrencyPipe,
+
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
@@ -39,15 +39,19 @@ import { Router } from '@angular/router';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    RouterModule,
+    CommonModule,
+    DatePipe,
+    CurrencyPipe,
   ],
+
   templateUrl: './vehicle-selection.component.html',
   styleUrl: './vehicle-selection.component.scss'
 })
 export class VehicleSelectionComponent {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['name', 'model', 'manufacturer', 'cost_in_credits', 'cargo_capacity', 'vehicle_class', 'created'];
+   displayedColumns = ['name', 'model', 'manufacturer', 'cost_in_credits', 'cargo_capacity', 'vehicle_class', 'created',  'actions'];
 
   vehicleService = inject(VehicleService);
   vehicles = this.vehicleService.vehicles;
